@@ -1,31 +1,84 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="3600"><title>交易信号</title>
-    <style>body{font-family:Arial;padding:15px;background:#121212;color:#fff;margin:0}h1{color:#4CAF50;font-size:22px;text-align:center}
-    h2{font-size:18px;border-bottom:2px solid #4CAF50;padding-bottom:5px;color:#fff;margin-top:0}
-    h3{font-size:15px;color:#aaa;margin:15px 0 5px 0}
-    .signal{background:#2a2a2a;padding:12px;margin:6px 0;border-radius:6px;border-left:4px solid #4CAF50;font-size:14px}
-    .none{color:#666;font-size:13px;font-style:italic}
-    .time{color:#888;font-size:12px;text-align:center;margin-bottom:15px}
-    button{display:block;margin:0 auto 20px auto;background:#4CAF50;color:#fff;border:none;padding:10px 30px;border-radius:6px;font-size:15px}
-    .date{color:#888;font-size:12px;margin-left:10px}.sig{font-weight:bold;margin-left:10px}
-    .box{background:#1e1e1e;padding:15px;border-radius:10px;margin-bottom:20px;box-shadow:0 4px 6px rgba(0,0,0,0.3)}.info{font-size:13px;color:#4CAF50;margin-bottom:10px;}</style></head>
-    <body>
-    <h1>全市场信号扫描</h1><p class="time">更新时间: 2026-10-17 16:22</p>
-    <button onclick="location.reload()">手动刷新</button>
-    
-    <div class="box">
-        <h2>📈 期货信号区</h2>
-        <h3>🎯 最新交易日信号</h3>
-        <p class="none">暂无信号</p>
-        <h3>⏳ 近3天有效观察 (未破止损)</h3>
-        <div class="signal" style="border-left-color:#f44336"><b>棕榈油</b> (P0) <span class="date">2026-10-15</span> <span class="sig" style="color:#f44336">做空(一级)</span></div>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全市场信号中枢</title>
+<style>
+body { font-family: Arial; padding: 15px; background: #121212; color: #fff; margin: 0; }
+h1 { color: #4CAF50; font-size: 22px; text-align: center; }
+h2 { font-size: 18px; border-bottom: 2px solid #4CAF50; padding-bottom: 5px; color: #fff; margin-top: 0; }
+h3 { font-size: 15px; color: #aaa; margin: 15px 0 5px 0; }
+.signal { background: #2a2a2a; padding: 12px; margin: 6px 0; border-radius: 6px; border-left: 4px solid #4CAF50; font-size: 14px; }
+.none { color: #666; font-size: 13px; font-style: italic; }
+.time { color: #888; font-size: 12px; text-align: center; margin-bottom: 15px; }
+button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #fff; border: none; padding: 10px 30px; border-radius: 6px; font-size: 15px; cursor: pointer; }
+.date { color: #888; font-size: 12px; margin-left: 10px; }
+.sig { font-weight: bold; margin-left: 10px; }
+.box { background: #1e1e1e; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+.info { font-size: 13px; color: #4CAF50; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h1>全市场信号中枢</h1>
+<button onclick="location.reload()">手动刷新</button>
 
-    <div class="box">
-        <h2>📊 A股信号区</h2>
-        <div class="info">今日基本面合格池: 0 只 (全市场筛选)</div>
-        <h3>🎯 最新交易日信号</h3>
-        <p class="none">暂无信号</p>
-        <h3>⏳ 近3天有效观察 (未破止损)</h3>
-        <p class="none">暂无信号</p>
-    </div>
-    </body></html>
+<div class="box">
+    <h2>📈 期货信号区</h2>
+    <p class="time" id="f-time">加载中...</p>
+    <h3>🎯 当日最新信号 (全量)</h3>
+    <div id="f-today"></div>
+    <h3>⏳ 近3日有效观察</h3>
+    <div id="f-past"></div>
+</div>
+
+<div class="box">
+    <h2>📊 A股信号区</h2>
+    <p class="time" id="s-time">加载中...</p>
+    <div class="info" id="s-pool">基本面合格池加载中...</div>
+    <h3>🎯 最新交易日信号 (全量)</h3>
+    <div id="s-today"></div>
+    <h3>⏳ 前一交易日有效观察 (最多显示10个)</h3>
+    <div id="s-past"></div>
+</div>
+
+<script>
+function renderList(elementId, list) {
+    const el = document.getElementById(elementId);
+    if (!list || list.length === 0) {
+        el.innerHTML = '<p class="none">暂无信号</p>';
+        return;
+    }
+    let html = "";
+    list.forEach(item => {
+        const color = item.sig_text.includes("多") ? "#4CAF50" : "#f44336";
+        html += `<div class="signal" style="border-left-color:${color}">
+            <b>${item.name}</b> (${item.sym}) 
+            <span class="date">${item.date}</span> 
+            <span class="sig" style="color:${color}">${item.sig_text}</span>
+        </div>`;
+    });
+    el.innerHTML = html;
+}
+
+function loadData(url, prefix, isStock) {
+    fetch(url + '?t=' + new Date().getTime())
+        .then(res => { if(!res.ok) throw new Error(); return res.json(); })
+        .then(data => {
+            document.getElementById(prefix + '-time').innerText = "更新时间: " + data.time;
+            if (isStock) {
+                document.getElementById('s-pool').innerText = `今日基本面合格池: ${data.pool_size} 只 (价<30, 盈利, 负债<30%)`;
+            }
+            renderList(prefix + '-today', data.today);
+            renderList(prefix + '-past', data.past);
+        })
+        .catch(e => {
+            document.getElementById(prefix + '-time').innerText = "暂无数据，请等待后台扫描完成";
+        });
+}
+
+loadData('futures_data.json', 'f', false);
+loadData('stocks_data.json', 's', true);
+</script>
+</body>
+</html>
