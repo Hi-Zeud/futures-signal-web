@@ -17,6 +17,8 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 .sig { font-weight: bold; margin-left: 10px; }
 .box { background: #1e1e1e; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
 .info { font-size: 13px; color: #4CAF50; margin-bottom: 10px; }
+.sub-box { background: #181818; padding: 10px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
+.sub-title { font-size: 16px; color: #2196F3; font-weight: bold; margin-bottom: 10px; border-bottom: 1px dashed #444; padding-bottom: 5px; }
 </style>
 </head>
 <body>
@@ -24,16 +26,33 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 <button onclick="location.reload()">手动刷新</button>
 
 <div class="box">
-    <h2>📈 期货信号区</h2>
+    <h2>📈 期货信号区 (多周期)</h2>
     <p class="time" id="f-time">加载中...</p>
-    <h3>🎯 当日最新信号 (全量)</h3>
-    <div id="f-today"></div>
-    <h3>⏳ 近3日有效观察</h3>
-    <div id="f-past"></div>
+    
+    <div class="sub-box">
+        <div class="sub-title">📅 日线信号 (全量)</div>
+        <div id="f-daily-today"></div>
+        <h3>⏳ 近3日有效观察</h3>
+        <div id="f-daily-past"></div>
+    </div>
+
+    <div class="sub-box">
+        <div class="sub-title">📆 周线信号 (看大势)</div>
+        <div id="f-weekly-today"></div>
+        <h3>⏳ 近3日有效观察</h3>
+        <div id="f-weekly-past"></div>
+    </div>
+
+    <div class="sub-box">
+        <div class="sub-title">⏱️ 1小时信号 (只推强势突破)</div>
+        <div id="f-hourly-today"></div>
+        <h3>⏳ 近3日有效观察</h3>
+        <div id="f-hourly-past"></div>
+    </div>
 </div>
 
 <div class="box">
-    <h2>📊 A股信号区</h2>
+    <h2>📊 A股信号区 (日线)</h2>
     <p class="time" id="s-time">加载中...</p>
     <div class="info" id="s-pool">基本面合格池加载中...</div>
     <h3>🎯 最新交易日信号 (全量)</h3>
@@ -61,24 +80,51 @@ function renderList(elementId, list) {
     el.innerHTML = html;
 }
 
-function loadData(url, prefix, isStock) {
-    fetch(url + '?t=' + new Date().getTime())
-        .then(res => { if(!res.ok) throw new Error(); return res.json(); })
+function loadFutures() {
+    fetch('futures_data.json?t=' + new Date().getTime())
+        .then(res => res.json())
         .then(data => {
-            document.getElementById(prefix + '-time').innerText = "更新时间: " + data.time;
-            if (isStock) {
-                document.getElementById('s-pool').innerText = `今日基本面合格池: ${data.pool_size} 只 (价<30, 盈利, 负债<30%)`;
-            }
-            renderList(prefix + '-today', data.today);
-            renderList(prefix + '-past', data.past);
+            document.getElementById('f-time').innerText = "更新时间: " + data.time;
+            
+            // 按前缀分组
+            const dailyToday = data.today.filter(x => x.sig_text.includes("[日线]"));
+            const weeklyToday = data.today.filter(x => x.sig_text.includes("[周线]"));
+            const hourlyToday = data.today.filter(x => x.sig_text.includes("[1小时]"));
+
+            const dailyPast = data.past.filter(x => x.sig_text.includes("[日线]"));
+            const weeklyPast = data.past.filter(x => x.sig_text.includes("[周线]"));
+            const hourlyPast = data.past.filter(x => x.sig_text.includes("[1小时]"));
+
+            renderList('f-daily-today', dailyToday);
+            renderList('f-daily-past', dailyPast);
+            
+            renderList('f-weekly-today', weeklyToday);
+            renderList('f-weekly-past', weeklyPast);
+            
+            renderList('f-hourly-today', hourlyToday);
+            renderList('f-hourly-past', hourlyPast);
         })
         .catch(e => {
-            document.getElementById(prefix + '-time').innerText = "暂无数据，请等待后台扫描完成";
+            document.getElementById('f-time').innerText = "期货数据加载失败";
         });
 }
 
-loadData('futures_data.json', 'f', false);
-loadData('stocks_data.json', 's', true);
+function loadStocks() {
+    fetch('stocks_data.json?t=' + new Date().getTime())
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('s-time').innerText = "更新时间: " + data.time;
+            document.getElementById('s-pool').innerText = `今日基本面合格池: ${data.pool_size} 只`;
+            renderList('s-today', data.today);
+            renderList('s-past', data.past);
+        })
+        .catch(e => {
+            document.getElementById('s-time').innerText = "股票数据加载失败";
+        });
+}
+
+loadFutures();
+loadStocks();
 </script>
 </body>
 </html>
