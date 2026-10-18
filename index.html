@@ -36,7 +36,7 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
         <div class="desc">
             <b>出场规则</b>：最长持仓 10 根K线。<br>
             🔴 <b>极品回调 / 顺势单</b>：重仓(3ATR)。<br>
-            ⚫ <b>强势突破 / 震荡缠绕</b>：放弃或观望。
+            ⚫ <b>强势突破 / 震荡缠绕</b>：放弃或避坑。
         </div>
         <div id="f-daily-today"></div>
         <h3>⏳ 近3日有效观察</h3>
@@ -87,11 +87,14 @@ function renderList(elementId, list) {
     }
     let html = "";
     list.forEach(item => {
-        // 根据文字判断颜色
-        let color = "#4CAF50"; // 默认绿
-        if (item.sig_text.includes("做空") || item.sig_text.includes("观望") || item.sig_text.includes("放弃")) {
-            color = "#f44336"; // 红
+        // 默认绿色 (做多/盈利)
+        let color = "#4CAF50"; 
+        
+        // 危险信号全部变红：做空、观望、放弃、避坑
+        if (item.sig_text.includes("做空") || item.sig_text.includes("观望") || item.sig_text.includes("放弃") || item.sig_text.includes("避坑")) {
+            color = "#f44336"; 
         }
+        
         html += `<div class="signal" style="border-left-color:${color}">
             <b>${item.name}</b> (${item.sym}) 
             <span class="date">${item.date}</span> 
