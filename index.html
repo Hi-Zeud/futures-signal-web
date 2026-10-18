@@ -19,6 +19,8 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 .info { font-size: 13px; color: #4CAF50; margin-bottom: 10px; }
 .sub-box { background: #181818; padding: 10px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
 .sub-title { font-size: 16px; color: #2196F3; font-weight: bold; margin-bottom: 10px; border-bottom: 1px dashed #444; padding-bottom: 5px; }
+.desc { font-size: 12px; color: #888; margin-bottom: 10px; line-height: 1.5; background: #111; padding: 10px; border-radius: 5px; }
+.tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: #333; margin-left: 5px; color: #ccc; }
 </style>
 </head>
 <body>
@@ -28,9 +30,15 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 <div class="box">
     <h2>📈 期货信号区 (多周期)</h2>
     <p class="time" id="f-time">加载中...</p>
+    <div class="info" id="f-scan-info">扫描期货品种: --</div>
     
     <div class="sub-box">
         <div class="sub-title">📅 日线信号 (全量)</div>
+        <div class="desc">
+            <b>策略说明</b>：入场看前8根均线同向发散，出场看10根K线。<br>
+            🔴 <b>极品回调</b>：重仓(3ATR)。 🟢 <b>顺势单</b>：重仓(3ATR)。<br>
+            ⚫ <b>强势突破</b>：放弃。 ⚪ <b>震荡缠绕</b>：观望。
+        </div>
         <div id="f-daily-today"></div>
         <h3>⏳ 近3日有效观察</h3>
         <div id="f-daily-past"></div>
@@ -38,6 +46,11 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 
     <div class="sub-box">
         <div class="sub-title">📆 周线信号 (看大势)</div>
+        <div class="desc">
+            <b>策略说明</b>：入场看前8根均线同向发散，<b>出场看8根K线</b>。<br>
+            🔴 <b>震荡缠绕</b>：重仓(1ATR)。 🟢 <b>强势突破</b>：半仓(1ATR)。<br>
+            ⚫ <b>极品回调/顺势单</b>：放弃。
+        </div>
         <div id="f-weekly-today"></div>
         <h3>⏳ 近3日有效观察</h3>
         <div id="f-weekly-past"></div>
@@ -45,6 +58,11 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 
     <div class="sub-box">
         <div class="sub-title">⏱️ 1小时信号 (只推强势突破)</div>
+        <div class="desc">
+            <b>策略说明</b>：入场看前8根均线同向发散，出场看10根K线。<br>
+            🟢 <b>强势突破</b>：半仓(2ATR)。<br>
+            ⚫ 其他位置不推。
+        </div>
         <div id="f-hourly-today"></div>
         <h3>⏳ 近3日有效观察</h3>
         <div id="f-hourly-past"></div>
@@ -70,7 +88,11 @@ function renderList(elementId, list) {
     }
     let html = "";
     list.forEach(item => {
-        const color = item.sig_text.includes("多") ? "#4CAF50" : "#f44336";
+        // 根据文字判断颜色
+        let color = "#4CAF50"; // 默认绿
+        if (item.sig_text.includes("做空") || item.sig_text.includes("观望") || item.sig_text.includes("放弃")) {
+            color = "#f44336"; // 红
+        }
         html += `<div class="signal" style="border-left-color:${color}">
             <b>${item.name}</b> (${item.sym}) 
             <span class="date">${item.date}</span> 
@@ -85,8 +107,10 @@ function loadFutures() {
         .then(res => res.json())
         .then(data => {
             document.getElementById('f-time').innerText = "更新时间: " + data.time;
+            if (data.total_scanned) {
+                document.getElementById('f-scan-info').innerText = "今日共扫描期货品种: " + data.total_scanned + " 只";
+            }
             
-            // 按前缀分组
             const dailyToday = data.today.filter(x => x.sig_text.includes("[日线]"));
             const weeklyToday = data.today.filter(x => x.sig_text.includes("[周线]"));
             const hourlyToday = data.today.filter(x => x.sig_text.includes("[1小时]"));
@@ -97,10 +121,8 @@ function loadFutures() {
 
             renderList('f-daily-today', dailyToday);
             renderList('f-daily-past', dailyPast);
-            
             renderList('f-weekly-today', weeklyToday);
             renderList('f-weekly-past', weeklyPast);
-            
             renderList('f-hourly-today', hourlyToday);
             renderList('f-hourly-past', hourlyPast);
         })
