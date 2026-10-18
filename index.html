@@ -20,7 +20,6 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
 .sub-box { background: #181818; padding: 10px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
 .sub-title { font-size: 16px; color: #2196F3; font-weight: bold; margin-bottom: 10px; border-bottom: 1px dashed #444; padding-bottom: 5px; }
 .desc { font-size: 12px; color: #888; margin-bottom: 10px; line-height: 1.5; background: #111; padding: 10px; border-radius: 5px; }
-.tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: #333; margin-left: 5px; color: #ccc; }
 </style>
 </head>
 <body>
@@ -33,14 +32,33 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
     <div class="info" id="f-scan-info">扫描期货品种: --</div>
     
     <div class="sub-box">
-        <div class="sub-title">📆 周线信号 (看大势)</div>
+        <div class="sub-title">📅 日线信号 (全量)</div>
         <div class="desc">
-            <b>策略说明</b>：入场看前8根均线同向发散，<b>出场看8根K线</b>。<br>
+            <b>出场规则</b>：最长持仓 10 根K线。<br>
+            🔴 <b>极品回调 / 顺势单</b>：重仓(3ATR)。<br>
+            ⚫ <b>强势突破 / 震荡缠绕</b>：放弃或观望。
+        </div>
+        <div id="f-daily-today"></div>
+        <h3>⏳ 近3日有效观察</h3>
+        <div id="f-daily-past"></div>
+    </div>
 
     <div class="sub-box">
-        <div class="sub-title">⏱️ 1小时信号 (只推强势突破)</div>
+        <div class="sub-title">📆 周线信号 (看大势)</div>
         <div class="desc">
-            <b>策略说明</b>：入场看前8根均线同向发散，出场看10根K线。<br>
+            <b>出场规则</b>：最长持仓 8 根K线。<br>
+            🔴 <b>震荡缠绕</b>：重仓(1ATR)。 🟢 <b>强势突破</b>：半仓(1ATR)。<br>
+            ⚫ <b>极品回调 / 顺势单</b>：放弃。
+        </div>
+        <div id="f-weekly-today"></div>
+        <h3>⏳ 近3日有效观察</h3>
+        <div id="f-weekly-past"></div>
+    </div>
+
+    <div class="sub-box">
+        <div class="sub-title">⏱️ 1小时信号 (快打)</div>
+        <div class="desc">
+            <b>出场规则</b>：最长持仓 10 根K线。<br>
             🟢 <b>强势突破</b>：半仓(2ATR)。<br>
             ⚫ 其他位置不推。
         </div>
