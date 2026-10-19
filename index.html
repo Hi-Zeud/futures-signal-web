@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>全市场信号中枢</title>
+<title>全市场信号中枢 (期货版)</title>
 <style>
 body { font-family: Arial; padding: 15px; background: #121212; color: #fff; margin: 0; }
 h1 { color: #4CAF50; font-size: 22px; text-align: center; }
@@ -68,16 +68,6 @@ button { display: block; margin: 0 auto 20px auto; background: #4CAF50; color: #
     </div>
 </div>
 
-<div class="box">
-    <h2>📊 A股信号区 (日线)</h2>
-    <p class="time" id="s-time">加载中...</p>
-    <div class="info" id="s-pool">基本面合格池加载中...</div>
-    <h3>🎯 最新交易日信号 (全量)</h3>
-    <div id="s-today"></div>
-    <h3>⏳ 前一交易日有效观察 (最多显示10个)</h3>
-    <div id="s-past"></div>
-</div>
-
 <script>
 function renderList(elementId, list) {
     const el = document.getElementById(elementId);
@@ -87,10 +77,7 @@ function renderList(elementId, list) {
     }
     let html = "";
     list.forEach(item => {
-        // 默认绿色 (做多/盈利)
         let color = "#4CAF50"; 
-        
-        // 危险信号全部变红：做空、观望、放弃、避坑
         if (item.sig_text.includes("做空") || item.sig_text.includes("观望") || item.sig_text.includes("放弃") || item.sig_text.includes("避坑")) {
             color = "#f44336"; 
         }
@@ -133,22 +120,7 @@ function loadFutures() {
         });
 }
 
-function loadStocks() {
-    fetch('stocks_data.json?t=' + new Date().getTime())
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById('s-time').innerText = "更新时间: " + data.time;
-            document.getElementById('s-pool').innerText = `今日基本面合格池: ${data.pool_size} 只`;
-            renderList('s-today', data.today);
-            renderList('s-past', data.past);
-        })
-        .catch(e => {
-            document.getElementById('s-time').innerText = "股票数据加载失败";
-        });
-}
-
 loadFutures();
-loadStocks();
 </script>
 </body>
 </html>
