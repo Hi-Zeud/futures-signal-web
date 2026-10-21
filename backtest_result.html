@@ -1,19 +1,37 @@
-<html><head><meta charset='utf-8'><title>左侧潜伏对比</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>原版(8根右侧) vs 潜伏版(6根左侧开盘入)</h1><p style='color:#aaa;text-align:center;'>潜伏版逻辑：6根同向+K2到位，K3开盘买入；若K3、K4收盘未突破K1高点则离场。</p>
+<html><head><meta charset='utf-8'><title>6根vs8根，全品种vs剔除</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>左侧埋伏：不同参数与品种池对比</h1><p style='color:#aaa;text-align:center;'>剔除品种：SN0, NI0, ZN0, JM0, J0, I0, LC0</p>
     <div class='box'>
-        <h2>对比组A：原版（右侧确认，8根同向）</h2>
+        <h2>1. 6根同向 (全品种)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>389 次</td><td><b>胜率</b></td><td>51.67%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.22</td><td><b>利润因子 (PF)</b></td><td><b>1.30</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>133561.79 元</b></td></tr>
+            <tr><td><b>总次数</b></td><td>4273</td><td><b>胜率</b></td><td>37.42%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.65</td><td><b>利润因子 (PF)</b></td><td><b>0.99</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-48721.07 元</b></td></tr>
         </table>
     </div>
     
     <div class='box'>
-        <h2>对比组B：左侧潜伏（开盘入，2根不破则跑）</h2>
+        <h2>2. 8根同向 (全品种)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>10228 次</td><td><b>胜率</b></td><td>42.32%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.44</td><td><b>利润因子 (PF)</b></td><td><b>1.06</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>331245.00 元</b></td></tr>
+            <tr><td><b>总次数</b></td><td>3502</td><td><b>胜率</b></td><td>36.92%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.61</td><td><b>利润因子 (PF)</b></td><td><b>0.94</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-172816.43 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>3. 6根同向 (剔除特定品种)</h2>
+        <table>
+            <tr><td><b>总次数</b></td><td>3637</td><td><b>胜率</b></td><td>37.45%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.60</td><td><b>利润因子 (PF)</b></td><td><b>0.96</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-103555.00 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>4. 8根同向 (剔除特定品种)</h2>
+        <table>
+            <tr><td><b>总次数</b></td><td>2976</td><td><b>胜率</b></td><td>37.13%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.60</td><td><b>利润因子 (PF)</b></td><td><b>0.94</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-120701.79 元</b></td></tr>
         </table>
     </div>
     </body></html>
