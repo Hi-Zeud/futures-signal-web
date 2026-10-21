@@ -1,19 +1,37 @@
-<html><head><meta charset='utf-8'><title>交叉状态对比</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>均线交叉状态对信号胜率的影响</h1><div class='box'><h2>1. 空头未死叉 (左侧做空，逆势摸顶)</h2><p>无交易</p></div>
+<html><head><meta charset='utf-8'><title>波浪级别回调深度对比</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>前低/前高反弹深度对后续信号的影响 (50根回溯版)</h1>
     <div class='box'>
-        <h2>2. 空头已死叉 (右侧做空，顺势而为)</h2>
+        <h2>1. 多头：前低踩 EMA21 反弹 (浅回调，极强)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>127 次</td><td><b>胜率</b></td><td>46.46%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.58</td><td><b>利润因子 (PF)</b></td><td><b>1.37</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>41663.21 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>98 次</td><td><b>胜率</b></td><td>47.96%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.58</td><td><b>利润因子 (PF)</b></td><td><b>1.46</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>64661.43 元</b></td></tr>
         </table>
     </div>
-    <div class='box'><h2>3. 多头未金叉 (左侧做多，逆势抄底)</h2><p>无交易</p></div>
+    
     <div class='box'>
-        <h2>4. 多头已金叉 (右侧做多，顺势而为)</h2>
+        <h2>2. 多头：前低踩 EMA60 反弹 (深回调，偏弱)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>140 次</td><td><b>胜率</b></td><td>45.71%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.44</td><td><b>利润因子 (PF)</b></td><td><b>1.21</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>46629.64 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>42 次</td><td><b>胜率</b></td><td>40.48%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.15</td><td><b>利润因子 (PF)</b></td><td><b>0.78</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-18031.79 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>3. 空头：前高碰 EMA21 回落 (浅反弹，极弱)</h2>
+        <table>
+            <tr><td><b>总交易次数</b></td><td>85 次</td><td><b>胜率</b></td><td>42.35%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.64</td><td><b>利润因子 (PF)</b></td><td><b>1.20</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>16617.86 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>4. 空头：前高碰 EMA60 回落 (深反弹，偏强)</h2>
+        <table>
+            <tr><td><b>总交易次数</b></td><td>42 次</td><td><b>胜率</b></td><td>54.76%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.49</td><td><b>利润因子 (PF)</b></td><td><b>1.81</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>25045.36 元</b></td></tr>
         </table>
     </div>
     </body></html>
