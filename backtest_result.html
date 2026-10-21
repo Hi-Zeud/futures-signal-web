@@ -1,10 +1,19 @@
-<html><head><meta charset='utf-8'><title>金叉回踩策略</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>金叉区间回踩支撑 专项回测</h1><p style='color:#aaa;text-align:center;'>规则：金叉点区间 + 回踩 + 3K反转 + K3振幅限制</p>
+<html><head><meta charset='utf-8'><title>布林极限3K反转</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>布林极限 + 3K反转策略</h1><p style='color:#aaa;text-align:center;'>入场：K2刺破布林上下轨 + 3K反转 + 放量</p>
     <div class='box'>
-        <h2>核心指标</h2>
+        <h2>对比组A：止盈看布林中轨 (均值回归)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>86 次</td><td><b>胜率</b></td><td>40.70%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>0.73</td><td><b>利润因子 (PF)</b></td><td><b>0.50</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-66350.00 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>1455 次</td><td><b>胜率</b></td><td>38.63%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>0.83</td><td><b>利润因子 (PF)</b></td><td><b>0.53</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-670395.75 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>对比组B：止盈看 3倍 ATR</h2>
+        <table>
+            <tr><td><b>总交易次数</b></td><td>1385 次</td><td><b>胜率</b></td><td>44.98%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.06</td><td><b>利润因子 (PF)</b></td><td><b>0.86</b></td></tr>
+            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-273325.36 元</b></td></tr>
         </table>
     </div>
     </body></html>
