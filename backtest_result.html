@@ -1,23 +1,17 @@
-<html><head><meta charset='utf-8'><title>加仓策略对比</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>原版 vs 逼近止损加仓 深度对比</h1><p style='color:#aaa;text-align:center;'>加仓逻辑：距止损位0.5ATR处加仓，打止损全出，3ATR或10天止盈</p>
+<html><head><meta charset='utf-8'><title>持仓时间分析</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>核心信号持仓时间分析 (成功抵达 3ATR 耗时)</h1>
     <div class='box'>
-        <h2>对比组A：原版不加仓 (单笔定投)</h2>
+        <h2>极品回调 (成功触及 3ATR 的持仓时间)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>200 次</td><td><b>胜率</b></td><td>44.00%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.95</td><td><b>利润因子 (PF)</b></td><td><b>1.54</b></td></tr>
-            <tr><td><b>最大回撤</b></td><td class='loss'>-40808.93 元</td><td><b>最大连亏</b></td><td class='loss'>5 次</td></tr>
-            <tr><td><b>单笔最大盈利</b></td><td class='win'>+58907.14 元</td><td><b>单笔最大亏损</b></td><td class='loss'>-21100.00 元</td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>121867.86 元</b></td></tr>
+            <tr><td><b>胜单样本数</b></td><td>20 次</td><td><b>平均耗时</b></td><td><b>7.8 个交易日 (约 31 小时)</b></td></tr>
+            <tr><td><b>中位数耗时</b></td><td>9.0 天</td><td><b>最短/最长耗时</b></td><td>4 天 / 10 天</td></tr>
         </table>
     </div>
     
     <div class='box'>
-        <h2>对比组B：距止损0.5ATR处加仓 (摊平成本)</h2>
+        <h2>顺势单 (成功触及 3ATR 的持仓时间)</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>200 次</td><td><b>胜率</b></td><td>48.50%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.62</td><td><b>利润因子 (PF)</b></td><td><b>1.53</b></td></tr>
-            <tr><td><b>最大回撤</b></td><td class='loss'>-50973.39 元</td><td><b>最大连亏</b></td><td class='loss'>5 次</td></tr>
-            <tr><td><b>单笔最大盈利</b></td><td class='win'>+58907.14 元</td><td><b>单笔最大亏损</b></td><td class='loss'>-28546.43 元</td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>152953.39 元</b></td></tr>
+            <tr><td><b>胜单样本数</b></td><td>68 次</td><td><b>平均耗时</b></td><td><b>8.0 个交易日 (约 32 小时)</b></td></tr>
+            <tr><td><b>中位数耗时</b></td><td>10.0 天</td><td><b>最短/最长耗时</b></td><td>2 天 / 10 天</td></tr>
         </table>
     </div>
     </body></html>
