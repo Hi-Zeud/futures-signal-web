@@ -1,37 +1,19 @@
-<html><head><meta charset='utf-8'><title>降级滤网测试</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>K2潜伏：降级滤网测试</h1>
+<html><head><meta charset='utf-8'><title>金叉死叉对比</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>把“8根同向”改为“金叉死叉”后的表现</h1><p style='color:#aaa;text-align:center;'>原条件：8根均线同向发散；新条件：只要EMA21>EMA60(金叉)或< (死叉)</p>
     <div class='box'>
-        <h2>方案1：缩量+实体+极值 (全品种)</h2>
+        <h2>对比组A：全49品种 (含碳酸锂、沪镍、铁矿等)</h2>
         <table>
-            <tr><td><b>总次数</b></td><td>3</td><td><b>胜率</b></td><td>66.67%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>0.00</td><td><b>利润因子 (PF)</b></td><td><b>inf</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>940.00 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>617 次</td><td><b>胜率</b></td><td>42.79%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.23</td><td><b>利润因子 (PF)</b></td><td><b>0.92</b></td></tr>
+            <tr><td><b>最大回撤</b></td><td class='loss'>-144477.50 元</td><td><b>净利润</b></td><td class='loss'><b>-65763.57 元</b></td></tr>
         </table>
     </div>
     
     <div class='box'>
-        <h2>方案1：缩量+实体+极值 (剔除妖股)</h2>
+        <h2>对比组B：剔除7大高波动品种后</h2>
         <table>
-            <tr><td><b>总次数</b></td><td>2</td><td><b>胜率</b></td><td>50.00%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>0.00</td><td><b>利润因子 (PF)</b></td><td><b>inf</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='win'><b>640.00 元</b></td></tr>
-        </table>
-    </div>
-    
-    <div class='box'>
-        <h2>方案2：仅缩量+实体 (全品种)</h2>
-        <table>
-            <tr><td><b>总次数</b></td><td>426</td><td><b>胜率</b></td><td>37.32%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>0.99</td><td><b>利润因子 (PF)</b></td><td><b>0.59</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-118125.36 元</b></td></tr>
-        </table>
-    </div>
-    
-    <div class='box'>
-        <h2>方案2：仅缩量+实体 (剔除妖股)</h2>
-        <table>
-            <tr><td><b>总次数</b></td><td>354</td><td><b>胜率</b></td><td>37.85%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>0.82</td><td><b>利润因子 (PF)</b></td><td><b>0.50</b></td></tr>
-            <tr><td colspan='2'><b>总净利润</b></td><td colspan='2' class='loss'><b>-95434.64 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>521 次</td><td><b>胜率</b></td><td>42.23%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.10</td><td><b>利润因子 (PF)</b></td><td><b>0.80</b></td></tr>
+            <tr><td><b>最大回撤</b></td><td class='loss'>-120439.29 元</td><td><b>净利润</b></td><td class='loss'><b>-113363.93 元</b></td></tr>
         </table>
     </div>
     </body></html>
