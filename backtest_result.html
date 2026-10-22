@@ -1,10 +1,19 @@
-<html><head><meta charset='utf-8'><title>新鲜交叉策略</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>10根内新鲜交叉 + 0.5ATR到位 + 3K反转</h1><p style='color:#aaa;text-align:center;'>止损K2极值 | 止盈3ATR | 10天时间止损</p>
+<html><head><meta charset='utf-8'><title>MACD过滤系统</title><style>body{background:#121212;color:#fff;padding:15px;font-family:Arial}table{border-collapse:collapse;width:100%;text-align:center;font-size:14px;margin-bottom:20px;background:#252525;}th,td{border:1px solid #444;padding:10px;}.win{color:#4CAF50;}.loss{color:#f44336;}.box{background:#1e1e1e;padding:15px;border-radius:8px;margin-bottom:15px;box-shadow:0 4px 6px rgba(0,0,0,0.3);}h1{color:#4CAF50;text-align:center;}h2{color:#fff;border-bottom:2px solid #4CAF50;padding-bottom:5px;margin-top:0;}</style></head><body><h1>8根同向 + 回踩3K + MACD动能确认</h1><p style='color:#aaa;text-align:center;'>多单要求MACD金叉，空单要求MACD死叉</p>
     <div class='box'>
-        <h2>回测结果</h2>
+        <h2>对比组A：全49品种</h2>
         <table>
-            <tr><td><b>总交易次数</b></td><td>22 次</td><td><b>胜率</b></td><td>54.55%</td></tr>
-            <tr><td><b>盈亏比</b></td><td>1.02</td><td><b>利润因子 (PF)</b></td><td><b>1.22</b></td></tr>
-            <tr><td><b>最大回撤</b></td><td class='loss'>-7242.14 元</td><td><b>净利润</b></td><td class='win'><b>3992.14 元</b></td></tr>
+            <tr><td><b>总交易次数</b></td><td>132 次</td><td><b>胜率</b></td><td>46.97%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>1.33</td><td><b>利润因子 (PF)</b></td><td><b>1.18</b></td></tr>
+            <tr><td><b>最大回撤</b></td><td class='loss'>-60326.43 元</td><td><b>净利润</b></td><td class='win'><b>36835.00 元</b></td></tr>
+        </table>
+    </div>
+    
+    <div class='box'>
+        <h2>对比组B：剔除7大高波动品种</h2>
+        <table>
+            <tr><td><b>总交易次数</b></td><td>110 次</td><td><b>胜率</b></td><td>44.55%</td></tr>
+            <tr><td><b>盈亏比</b></td><td>0.87</td><td><b>利润因子 (PF)</b></td><td><b>0.70</b></td></tr>
+            <tr><td><b>最大回撤</b></td><td class='loss'>-54445.71 元</td><td><b>净利润</b></td><td class='loss'><b>-44371.43 元</b></td></tr>
         </table>
     </div>
     </body></html>
